@@ -1,0 +1,35 @@
+.Calories{
+    width: 258px;
+    height: 120px;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+}
+.CaloriesWrapper{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 100%;
+    padding: 0 32px;
+}
+.RectangleBackground{
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.InfosWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.Data{
+    color: #282D30;
+    font-weight: 700;
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+.Label{
+    color: #74798C;
+    font-weight: 500;
+}

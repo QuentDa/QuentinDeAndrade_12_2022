@@ -1,0 +1,20 @@
+.Header{
+    height: 98px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.Menu{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    width: 80%;
+}
+.Menu a{
+    color: #fff;
+    text-decoration: none;
+}
+.MenuLink{
+    font-size: 26px;
+}

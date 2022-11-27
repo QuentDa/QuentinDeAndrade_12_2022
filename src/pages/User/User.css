@@ -1,0 +1,27 @@
+.User{
+    margin: 0 130px 0 250px;
+    padding-top: 60px;
+}
+.Title{
+    font-size: 48px;
+    font-weight: 500;
+    margin-top: 0;
+}
+.Color{
+    color: #FF0101;
+}
+.SummaryWrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
+}
+.ChartsWrapper{
+    width: 70%;
+}
+.UserWrapper{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
