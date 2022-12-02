@@ -11,15 +11,22 @@ import LipidesIcon from './../../assets/svg/cheeseburger.svg'
 
 
 export default function User() {
-    const [isLoaded, setIsLoaded] = useState(false); const [items, setItems] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false); const [infos, setInfos] = useState([]); const [activities, setActivities] = useState([]); const [sessions, setSessions] = useState([])
     const { id } = useParams(); //Récupération de l'id envoyé en URL
     useEffect(() => {
-        Get('http://localhost:3000/user/'+id)
+        Get('http://localhost:3000/user/' + id)
             .then(result => {
-                console.log(result)
+                setInfos(result.data)
+            })
+        Get('http://localhost:3000/user/' + id +'/activity')
+            .then(result => {                
+                setActivities(result.data)
+                
+            } )
+        Get('http://localhost:3000/user/' + id +'/average-sessions')
+            .then(result => {
                 setIsLoaded(true);
-                setItems(result.data)
-                console.log(result.data)
+                setSessions(result.data)
             })
     }, [id])
     if (!isLoaded) {
@@ -28,20 +35,20 @@ export default function User() {
     else {
         return (
             <div className="User">
-                <h2 className="Title">Bonjour <span className="Color">{items.userInfos.firstName}</span></h2>
-                <span className="Objective">Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
+                <h2 className="Title">Bonjour <span className="Color">{infos.userInfos.firstName}</span></h2>
+                <span className="Objective">{sessions.sessions[0].day}Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
 
 
                 <div className="SummaryWrapper">
                     <div className="ChartsWrapper">
-                        <BarChartGraph />
+                        <BarChartGraph data={activities.sessions} />
                     </div>
 
                     <div className="UserWrapper">
-                        <Card rectangleBackground="#FBEAEA" icon={CaloriesIcon} data={items.keyData.calorieCount} metric="kCal" label="Calories" />
-                        <Card rectangleBackground="#E9F4FB" icon={ProteineIcon} data={items.keyData.proteinCount} metric="g" label="Proteines" />
-                        <Card rectangleBackground="#FAF6E5" icon={GlucidesIcon} data={items.keyData.carbohydrateCount} metric="g" label="Glucides" />
-                        <Card rectangleBackground="#FBEAEF" icon={LipidesIcon} data={items.keyData.lipidCount} metric="g" label="Lipides" />
+                        <Card rectangleBackground="#FBEAEA" icon={CaloriesIcon} data={infos.keyData.calorieCount} metric="kCal" label="Calories" />
+                        <Card rectangleBackground="#E9F4FB" icon={ProteineIcon} data={infos.keyData.proteinCount} metric="g" label="Proteines" />
+                        <Card rectangleBackground="#FAF6E5" icon={GlucidesIcon} data={infos.keyData.carbohydrateCount} metric="g" label="Glucides" />
+                        <Card rectangleBackground="#FBEAEF" icon={LipidesIcon} data={infos.keyData.lipidCount} metric="g" label="Lipides" />
                     </div>
                 </div>
             </div>

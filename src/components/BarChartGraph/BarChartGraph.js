@@ -1,46 +1,11 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, YAxis } from 'recharts';
+import formatDate from '../../service/utils/activity/formatDate';
 import './BarChartGraph.css'
 
-const data = [
-    {
-        day: '2020-07-01',
-        kilogram: 80,
-        calories: 240
-    },
-    {
-        day: '2020-07-02',
-        kilogram: 80,
-        calories: 220
-    },
-    {
-        day: '2020-07-03',
-        kilogram: 81,
-        calories: 280
-    },
-    {
-        day: '2020-07-04',
-        kilogram: 81,
-        calories: 290
-    },
-    {
-        day: '2020-07-05',
-        kilogram: 80,
-        calories: 160
-    },
-    {
-        day: '2020-07-06',
-        kilogram: 78,
-        calories: 162
-    },
-    {
-        day: '2020-07-07',
-        kilogram: 76,
-        calories: 390
-    },
-];
+export default function BarChartGraph(props) {
+   formatDate(props.data)
 
-export default function BarChartGraph() {
     return (
         <div className="Daily">
             <ResponsiveContainer width="100%" height="100%">
@@ -48,7 +13,7 @@ export default function BarChartGraph() {
                     width={500}
                     height={300}
                     barGap={10}
-                    data={data}
+                    data={props.data}
                     margin={{
                         top: 20,
                         right: 30,
@@ -61,9 +26,9 @@ export default function BarChartGraph() {
                     <YAxis axisLine={false} tickLine={false} orientation="right" />
                     <XAxis dataKey="day" tickLine={false} />
                     <Tooltip  />
-                    <Legend layout="horizontal" verticalAlign="top" align="right" height={60} iconType='circle' iconSize={10} />
-                    <Bar dataKey="kilogram" fill="#282D30" barSize={10} radius={[10, 10, 0, 0]} />
-                    <Bar dataKey="calories" fill="#E60000" barSize={10} radius={[10, 10, 0, 0]} />
+                    <Legend layout="horizontal" verticalAlign="top" align="right" height={60} iconType='circle' iconSize={10} formatter={(value, entry, index) => <span className='LegendText'>{value}</span>}  />
+                    <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" barSize={10} radius={[10, 10, 0, 0]} />
+                    <Bar name="Calories brûlées (kCal)" dataKey="calories" fill="#E60000" barSize={10} radius={[10, 10, 0, 0]} />
                 </BarChart>
             </ResponsiveContainer>
         </div>
