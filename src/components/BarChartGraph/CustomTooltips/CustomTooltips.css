@@ -1,0 +1,11 @@
+.CustomTooltips{
+    width: 70px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: #E60000;
+    color: #FFFFFF;
+    border: none;
+}

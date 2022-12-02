@@ -5,4 +5,6 @@
 }
 .LegendText{
     color: #74798C;
+    font-weight: 500;
+    margin: 0 15px 0 5px;
 }

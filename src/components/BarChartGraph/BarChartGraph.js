@@ -1,6 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, YAxis } from 'recharts';
 import formatDate from '../../service/utils/activity/formatDate';
+import CustomTooltips from './CustomTooltips/CustomTooltips';
 import './BarChartGraph.css'
 
 export default function BarChartGraph(props) {
@@ -16,7 +17,7 @@ export default function BarChartGraph(props) {
                     data={props.data}
                     margin={{
                         top: 20,
-                        right: 30,
+                        right: 20,
                         left: 20,
                         bottom: 20,
                     }}
@@ -25,7 +26,7 @@ export default function BarChartGraph(props) {
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <YAxis axisLine={false} tickLine={false} orientation="right" />
                     <XAxis dataKey="day" tickLine={false} />
-                    <Tooltip  />
+                    <Tooltip offset={80} content={<CustomTooltips />} wrapperStyle={{ outline: "none" }} />
                     <Legend layout="horizontal" verticalAlign="top" align="right" height={60} iconType='circle' iconSize={10} formatter={(value, entry, index) => <span className='LegendText'>{value}</span>}  />
                     <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" barSize={10} radius={[10, 10, 0, 0]} />
                     <Bar name="Calories brûlées (kCal)" dataKey="calories" fill="#E60000" barSize={10} radius={[10, 10, 0, 0]} />

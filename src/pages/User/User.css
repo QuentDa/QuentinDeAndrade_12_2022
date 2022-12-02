@@ -17,11 +17,13 @@
     margin-top: 50px;
 }
 .ChartsWrapper{
-    width: 70%;
+    width: 75%;
 }
 .UserWrapper{
     width: 25%;
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
     flex-direction: column;
     gap: 40px;
 }
