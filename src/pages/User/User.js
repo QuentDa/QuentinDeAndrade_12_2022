@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './User.css'
 import { Get } from "../../service/Api.js";
 import BarChartGraph from "../../components/BarChartGraph/BarChartGraph";
+import LineChartGraph from "../../components/LineChartGraph/LineChartGraph";
 import Card from "../../components/Card/Card";
 import CaloriesIcon from './../../assets/svg/Calories.svg'
 import ProteineIcon from './../../assets/svg/Proteines.svg'
@@ -36,12 +37,18 @@ export default function User() {
         return (
             <div className="User">
                 <h2 className="Title">Bonjour <span className="Color">{infos.userInfos.firstName}</span></h2>
-                <span className="Objective">{sessions.sessions[0].day}Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
+                <span className="Objective">Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
 
 
                 <div className="SummaryWrapper">
                     <div className="ChartsWrapper">
                         <BarChartGraph data={activities.sessions} />
+                        
+                        <div className="OtherChartsWrapper">
+                            <div className="LineChart">
+                                <LineChartGraph data={sessions.sessions} />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="UserWrapper">
