@@ -1,14 +1,15 @@
 import React from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import './LineChartGraph.css'
+import formatDay from "../../service/utils/session/formatDay";
 
 export default function LineChartGraph(props) {
+    formatDay(props.data)
+
     return (
         <div className="LineChartGraph">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                    width={500}
-                    height={300}
                     data={props.data}
                     margin={{
                         top: 120,
@@ -17,10 +18,11 @@ export default function LineChartGraph(props) {
                         bottom: 20,
                     }}
                 >
-                    <XAxis dataKey="day" tickLine={false} axisLine={false} height={35} padding={{left: 20, right: 20}} />
-                    <YAxis tickLine={false} axisLine={false} hide={true} />
+                    <text x={120} y={30} fill="#FBFBFB" textAnchor='middle' dominantBaseline="central" fontSize="16" style={{opacity: 0.5, width: 20}}>Durée moyenne des sessions</text>
+                    <XAxis dataKey="day" tickLine={false} axisLine={false} height={30} padding={{left: 20, right: 20}} stroke="#FBFBFB" />
+                    <YAxis tickLine={false} axisLine={false} hide={true} padding={{bottom: 20}} />
                     <Tooltip />
-                    <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" />
+                    <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" dot={false} />
                 </LineChart>
             </ResponsiveContainer>
         </div>

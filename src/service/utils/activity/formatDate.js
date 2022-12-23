@@ -1,7 +1,6 @@
 /**
  * Fonction pour formater la date provenant de la data de activities
  * @param {Array}
- * @returns {object}
  */
 
 export default function formatDate(dataActivitySessions) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import './User.css'
-import { Get } from "../../service/Api.js";
+import { GetApiUrl } from "../../service/Api.js";
 import BarChartGraph from "../../components/BarChartGraph/BarChartGraph";
 import LineChartGraph from "../../components/LineChartGraph/LineChartGraph";
 import Card from "../../components/Card/Card";
@@ -9,25 +9,26 @@ import CaloriesIcon from './../../assets/svg/Calories.svg'
 import ProteineIcon from './../../assets/svg/Proteines.svg'
 import GlucidesIcon from './../../assets/svg/apple.svg'
 import LipidesIcon from './../../assets/svg/cheeseburger.svg'
+import Modelisation from "../../service/utils/Modelisation";
 
 
 export default function User() {
     const [isLoaded, setIsLoaded] = useState(false); const [infos, setInfos] = useState([]); const [activities, setActivities] = useState([]); const [sessions, setSessions] = useState([])
     const { id } = useParams(); //Récupération de l'id envoyé en URL
     useEffect(() => {
-        Get('http://localhost:3000/user/' + id)
+        GetApiUrl('info', id)
             .then(result => {
-                setInfos(result.data)
+                setInfos(Modelisation.prepareInfo(result))
             })
-        Get('http://localhost:3000/user/' + id +'/activity')
+        GetApiUrl('activity', id)
             .then(result => {                
-                setActivities(result.data)
+                setActivities(Modelisation.prepareActivity(result))
                 
             } )
-        Get('http://localhost:3000/user/' + id +'/average-sessions')
+        GetApiUrl('session', id)
             .then(result => {
                 setIsLoaded(true);
-                setSessions(result.data)
+                setSessions(Modelisation.prepareSession(result))
             })
     }, [id])
     if (!isLoaded) {
@@ -36,7 +37,7 @@ export default function User() {
     else {
         return (
             <div className="User">
-                <h2 className="Title">Bonjour <span className="Color">{infos.userInfos.firstName}</span></h2>
+                <h2 className="Title">Bonjour <span className="Color">{infos.firstName}</span></h2>
                 <span className="Objective">Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
 
 
@@ -52,10 +53,10 @@ export default function User() {
                     </div>
 
                     <div className="UserWrapper">
-                        <Card rectangleBackground="#FBEAEA" icon={CaloriesIcon} data={infos.keyData.calorieCount} metric="kCal" label="Calories" />
-                        <Card rectangleBackground="#E9F4FB" icon={ProteineIcon} data={infos.keyData.proteinCount} metric="g" label="Proteines" />
-                        <Card rectangleBackground="#FAF6E5" icon={GlucidesIcon} data={infos.keyData.carbohydrateCount} metric="g" label="Glucides" />
-                        <Card rectangleBackground="#FBEAEF" icon={LipidesIcon} data={infos.keyData.lipidCount} metric="g" label="Lipides" />
+                        <Card rectangleBackground="#FBEAEA" icon={CaloriesIcon} data={infos.calorieCount} metric="kCal" label="Calories" />
+                        <Card rectangleBackground="#E9F4FB" icon={ProteineIcon} data={infos.proteinCount} metric="g" label="Proteines" />
+                        <Card rectangleBackground="#FAF6E5" icon={GlucidesIcon} data={infos.carbohydrateCount} metric="g" label="Glucides" />
+                        <Card rectangleBackground="#FBEAEF" icon={LipidesIcon} data={infos.lipidCount} metric="g" label="Lipides" />
                     </div>
                 </div>
             </div>
