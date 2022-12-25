@@ -36,4 +36,14 @@ export default class Modelisation {
     static prepareSession(raw) {
         return raw.data;
     }
+
+    /**
+     * Fonction pour cibler les données de USER_PERFORMANCE récupérées en API
+     * @param{object} raw
+     * @returns{object}
+     * 
+    */
+    static preparePerformance(raw) {
+        return raw.data;
+    }
 }

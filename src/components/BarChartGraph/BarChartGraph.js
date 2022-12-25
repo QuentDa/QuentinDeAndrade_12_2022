@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, YAxis } from 'recharts';
 import formatDate from '../../service/utils/activity/formatDate';
-import CustomTooltips from './../CustomTooltips/CustomTooltips';
+import CustomTooltips from './CustomTooltips/CustomTooltips';
 import './BarChartGraph.css'
 
 export default function BarChartGraph(props) {

@@ -1,5 +1,15 @@
 .LineChartGraph{
+    position: relative;
+    border-radius: 5px;
     width: 100%;
-    height: 320px;
+    height: 300px;
     background-color: #FF0000;
+}
+.LineChartTitle{
+    position: absolute;
+    left: 50px;
+    top: 35px;
+    color: #FBFBFB;
+    opacity: 0.5;
+    width: 150px;
 }

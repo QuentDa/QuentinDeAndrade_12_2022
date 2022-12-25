@@ -14,6 +14,9 @@ export async function GetApiUrl(service, id) {
         case 'session':
             url = ApiUrl() + id +'/average-sessions';
             break;
+        case 'performance':
+            url = ApiUrl() + id +'/performance';
+            break;
     }
     let result = await fetch(url)
     let resultJS = await result.json()

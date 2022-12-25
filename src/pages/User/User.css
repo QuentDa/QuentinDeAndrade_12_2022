@@ -1,12 +1,12 @@
 .User{
     margin: 0 130px 0 250px;
-    padding-top: 150px;
-    padding-bottom: 50px;
+    padding-top: 120px;
 }
 .Title{
     font-size: 48px;
     font-weight: 500;
     margin-top: 0;
+    margin-bottom: 5px;
 }
 .Color{
     color: #FF0101;
@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .ChartsWrapper{
     width: 75%;
@@ -26,7 +26,7 @@
     flex-wrap: wrap;
     align-items: flex-end;
     flex-direction: column;
-    gap: 40px;
+    gap: 55px;
 }
 
 .OtherChartsWrapper{
@@ -37,4 +37,26 @@
 }
 .LineChart{
     width: 30%;
+}
+.RadarChart{
+    width: 30%;
+}
+@media screen and (max-width: 1300px){
+    .User{
+        margin: 0 40px 0 150px;
+    }
+    .SummaryWrapper{
+        flex-direction: column-reverse;    
+    }
+    .UserWrapper{
+        gap: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        padding-bottom: 50px;
+        justify-content: space-between;
+    }
+    .ChartsWrapper{
+        width: 100%;
+    }
 }

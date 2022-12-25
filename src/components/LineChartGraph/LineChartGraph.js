@@ -1,5 +1,6 @@
 import React from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import CustomTooltips from './CustomTooltips/CustomTooltips';
 import './LineChartGraph.css'
 import formatDay from "../../service/utils/session/formatDay";
 
@@ -8,6 +9,7 @@ export default function LineChartGraph(props) {
 
     return (
         <div className="LineChartGraph">
+            <span className="LineChartTitle">Durée moyenne des sessions</span>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     data={props.data}
@@ -18,11 +20,10 @@ export default function LineChartGraph(props) {
                         bottom: 20,
                     }}
                 >
-                    <text x={120} y={30} fill="#FBFBFB" textAnchor='middle' dominantBaseline="central" fontSize="16" style={{opacity: 0.5, width: 20}}>Durée moyenne des sessions</text>
-                    <XAxis dataKey="day" tickLine={false} axisLine={false} height={30} padding={{left: 20, right: 20}} stroke="#FBFBFB" />
-                    <YAxis tickLine={false} axisLine={false} hide={true} padding={{bottom: 20}} />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" dot={false} />
+                    <XAxis dataKey="day" tickLine={false} axisLine={false} height={30} padding={{left: 20, right: 20}} stroke="#FBFBFB" style={{opacity:0.5}} />
+                    <YAxis tickLine={false} axisLine={false} hide={true} padding={{bottom: 30}} />
+                    <Tooltip  content={<CustomTooltips />} wrapperStyle={{ outline: "none" }} />
+                    <Line type="natural" dataKey="sessionLength" stroke="#FBFBFB" strokeWidth={2} dot={false} />
                 </LineChart>
             </ResponsiveContainer>
         </div>

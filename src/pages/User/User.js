@@ -4,6 +4,7 @@ import './User.css'
 import { GetApiUrl } from "../../service/Api.js";
 import BarChartGraph from "../../components/BarChartGraph/BarChartGraph";
 import LineChartGraph from "../../components/LineChartGraph/LineChartGraph";
+import RadarChartGraph from "../../components/RadarChartGraph/RadarChartGraph";
 import Card from "../../components/Card/Card";
 import CaloriesIcon from './../../assets/svg/Calories.svg'
 import ProteineIcon from './../../assets/svg/Proteines.svg'
@@ -13,7 +14,7 @@ import Modelisation from "../../service/utils/Modelisation";
 
 
 export default function User() {
-    const [isLoaded, setIsLoaded] = useState(false); const [infos, setInfos] = useState([]); const [activities, setActivities] = useState([]); const [sessions, setSessions] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false); const [infos, setInfos] = useState([]); const [activities, setActivities] = useState([]); const [sessions, setSessions] = useState([]); const [performance, setPerformance] = useState([])
     const { id } = useParams(); //Récupération de l'id envoyé en URL
     useEffect(() => {
         GetApiUrl('info', id)
@@ -24,11 +25,15 @@ export default function User() {
             .then(result => {                
                 setActivities(Modelisation.prepareActivity(result))
                 
-            } )
+            })
         GetApiUrl('session', id)
             .then(result => {
-                setIsLoaded(true);
                 setSessions(Modelisation.prepareSession(result))
+            })
+        GetApiUrl('performance', id)
+            .then(result => {
+                setIsLoaded(true);
+                setPerformance(Modelisation.preparePerformance(result))
             })
     }, [id])
     if (!isLoaded) {
@@ -48,6 +53,9 @@ export default function User() {
                         <div className="OtherChartsWrapper">
                             <div className="LineChart">
                                 <LineChartGraph data={sessions.sessions} />
+                            </div>
+                            <div className="RadarChart">
+                                <RadarChartGraph data={performance.data} />
                             </div>
                         </div>
                     </div>
