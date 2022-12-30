@@ -1,5 +1,5 @@
 /**
- * Fonction pour formater la date provenant de la data de activities
+ * Function to format the day from API data in days number instead of full date
  * @param {Array}
  */
 

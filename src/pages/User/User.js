@@ -15,7 +15,10 @@ import Modelisation from "../../service/utils/Modelisation";
 
 export default function User() {
     const [isLoaded, setIsLoaded] = useState(false); const [infos, setInfos] = useState([]); const [activities, setActivities] = useState([]); const [sessions, setSessions] = useState([]); const [performance, setPerformance] = useState([])
-    const { id } = useParams(); //Récupération de l'id envoyé en URL
+
+    /* Grabbing the id in URL */
+    const { id } = useParams();
+    
     useEffect(() => {
         GetApiUrl('info', id)
             .then(result => {

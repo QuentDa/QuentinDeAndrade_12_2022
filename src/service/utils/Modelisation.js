@@ -1,9 +1,9 @@
 export default class Modelisation {
 
     /**
-     * Fonction pour cibler les données de USER_MAIN_DATA récupérées en API
-     * @param{object} raw
-     * @returns{object}
+     * Function to get the data from USER_MAIN_DATA from the API
+     * @param {object} raw
+     * @returns {object}
      * 
     */
     static prepareInfo(raw) {
@@ -18,7 +18,7 @@ export default class Modelisation {
     }
 
     /**
-     * Fonction pour cibler les données de USER_ACTIVITY récupérées en API
+     * Function to get the data from USER_ACTIVITY from the API
      * @param{object} raw
      * @returns{object}
      * 
@@ -28,7 +28,7 @@ export default class Modelisation {
     }
 
     /**
-     * Fonction pour cibler les données de USER_AVERAGE_SESSIONS récupérées en API
+     * Function to get the data from USER_AVERAGE_SESSIONS from the API
      * @param{object} raw
      * @returns{object}
      * 
@@ -38,7 +38,7 @@ export default class Modelisation {
     }
 
     /**
-     * Fonction pour cibler les données de USER_PERFORMANCE récupérées en API
+     * Function to get the data from USER_PERFORMANCE from the API
      * @param{object} raw
      * @returns{object}
      * 

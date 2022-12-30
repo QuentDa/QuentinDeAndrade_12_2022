@@ -1,6 +1,6 @@
 /**
- * Fonction pour formater les jours en format lettre.
- * @param {Array}
+ * Function to format the days from the API data in a letter format.
+ * @param {Array} * Data from the API
  */
 
 export default function formatDay(dataDay) {

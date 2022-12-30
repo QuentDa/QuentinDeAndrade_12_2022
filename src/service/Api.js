@@ -1,5 +1,12 @@
 import { ApiUrl } from "../config/env";
 
+/**
+ * Function to pick up the correct data depending on the service that uses a component
+ * @param {string} service *Getting the right data
+ * @param {number} id *Getting the user ID
+ * @returns {object} *Right Data from backend
+ */
+
 export async function GetApiUrl(service, id) {
     let url;
 
