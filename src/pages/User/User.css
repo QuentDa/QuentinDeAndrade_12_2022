@@ -35,10 +35,7 @@
     justify-content: space-between;
     margin-top: 50px;
 }
-.LineChart{
-    width: 30%;
-}
-.RadarChart{
+.LineChart, .RadarChart, .PieChart{
     width: 30%;
 }
 @media screen and (max-width: 1300px){

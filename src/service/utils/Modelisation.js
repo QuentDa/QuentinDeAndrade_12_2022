@@ -13,6 +13,7 @@ export default class Modelisation {
         data.proteinCount = raw.data.keyData.proteinCount;
         data.carbohydrateCount = raw.data.keyData.carbohydrateCount;
         data.lipidCount = raw.data.keyData.lipidCount;
+        data.todayScore = raw.data.todayScore
 
         return data;
     }

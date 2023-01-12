@@ -5,6 +5,7 @@ import { GetApiUrl } from "../../service/Api.js";
 import BarChartGraph from "../../components/BarChartGraph/BarChartGraph";
 import LineChartGraph from "../../components/LineChartGraph/LineChartGraph";
 import RadarChartGraph from "../../components/RadarChartGraph/RadarChartGraph";
+import PieChartGraph from "../../components/PieChartGraph/PieChartGraph";
 import Card from "../../components/Card/Card";
 import CaloriesIcon from './../../assets/svg/Calories.svg'
 import ProteineIcon from './../../assets/svg/Proteines.svg'
@@ -59,6 +60,9 @@ export default function User() {
                             </div>
                             <div className="RadarChart">
                                 <RadarChartGraph data={performance.data} />
+                            </div>
+                            <div className="PieChart">
+                                <PieChartGraph data={infos.todayScore} />
                             </div>
                         </div>
                     </div>
