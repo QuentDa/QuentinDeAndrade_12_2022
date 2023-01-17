@@ -12,16 +12,23 @@ import ProteineIcon from './../../assets/svg/Proteines.svg'
 import GlucidesIcon from './../../assets/svg/apple.svg'
 import LipidesIcon from './../../assets/svg/cheeseburger.svg'
 import Modelisation from "../../service/utils/Modelisation";
+import {USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from "../../data/data.js"
 
 
 export default function User() {
-    const [isLoaded, setIsLoaded] = useState(false); const [infos, setInfos] = useState([]); const [activities, setActivities] = useState([]); const [sessions, setSessions] = useState([]); const [performance, setPerformance] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [infos, setInfos] = useState([]); 
+    const [activities, setActivities] = useState([]); 
+    const [sessions, setSessions] = useState([]); 
+    const [performance, setPerformance] = useState([]);
 
     /* Grabbing the id in URL */
     const { id } = useParams();
     
     useEffect(() => {
-        GetApiUrl('info', id)
+        const useMockedData = false;
+        if (useMockedData === false ) {
+            GetApiUrl('info', id)
             .then(result => {
                 setInfos(Modelisation.prepareInfo(result))
             })
@@ -39,6 +46,23 @@ export default function User() {
                 setIsLoaded(true);
                 setPerformance(Modelisation.preparePerformance(result))
             })
+        }
+        else {
+            const parsedId = parseInt(id)
+            setInfos(Modelisation.prepareInfo(
+                {data: USER_MAIN_DATA.find(element => element.id === parsedId)}
+            ));
+            setActivities(Modelisation.prepareActivity(
+                {data: USER_ACTIVITY.find(element => element.userId === parsedId)}
+            ));
+            setSessions(Modelisation.prepareSession(
+                {data: USER_AVERAGE_SESSIONS.find(element => element.userId === parsedId)}
+            ));
+            setPerformance(Modelisation.preparePerformance(
+                {data: USER_PERFORMANCE.find(element => element.userId === parsedId)}
+            ))
+            setIsLoaded(true);
+        }
     }, [id])
     if (!isLoaded) {
         return <div>Chargement...</div>;

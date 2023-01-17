@@ -7,6 +7,7 @@ export default class Modelisation {
      * 
     */
     static prepareInfo(raw) {
+
         let data = {};
         data.firstName = raw.data.userInfos.firstName;
         data.calorieCount = raw.data.keyData.calorieCount;

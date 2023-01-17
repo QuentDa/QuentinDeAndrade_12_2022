@@ -3,9 +3,11 @@ import { BarChart, Bar, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContain
 import formatDate from '../../service/utils/activity/formatDate';
 import CustomTooltips from './CustomTooltips/CustomTooltips';
 import './BarChartGraph.css'
+import PropTypes from 'prop-types';
 
 export default function BarChartGraph(props) {
-   formatDate(props.data)
+    console.log(props)
+    formatDate(props.data)
 
     return (
         <div className="Daily">
@@ -28,7 +30,7 @@ export default function BarChartGraph(props) {
                     <YAxis dataKey="calories" hide={true} yAxisId={2} />
                     <XAxis dataKey="day" tickLine={false} />
                     <Tooltip offset={80} content={<CustomTooltips />} wrapperStyle={{ outline: "none" }} />
-                    <Legend layout="horizontal" verticalAlign="top" align="right" height={60} iconType='circle' iconSize={10} formatter={(value, entry, index) => <span className='LegendText'>{value}</span>}  />
+                    <Legend layout="horizontal" verticalAlign="top" align="right" height={60} iconType='circle' iconSize={10} formatter={(value, entry, index) => <span className='LegendText'>{value}</span>} />
                     <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" barSize={10} radius={[10, 10, 0, 0]} yAxisId={1} />
                     <Bar name="Calories brûlées (kCal)" dataKey="calories" fill="#E60000" barSize={10} radius={[10, 10, 0, 0]} yAxisId={2} />
                 </BarChart>
@@ -36,3 +38,10 @@ export default function BarChartGraph(props) {
         </div>
     );
 }
+
+BarChartGraph.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        day: PropTypes.string.isRequired, kilogram: PropTypes.number.isRequired, calories: PropTypes.number.isRequired
+    })).isRequired
+}
+
