@@ -1,8 +1,9 @@
 import React from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import CustomTooltips from './CustomTooltips/CustomTooltips';
-import './LineChartGraph.css'
 import formatDay from "../../service/utils/session/formatDay";
+import PropTypes from 'prop-types';
+import './LineChartGraph.css'
 
 export default function LineChartGraph(props) {
     formatDay(props.data)
@@ -28,4 +29,11 @@ export default function LineChartGraph(props) {
             </ResponsiveContainer>
         </div>
     );
+}
+
+LineChartGraph.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        day: PropTypes.number.isRequired,
+        sessionLength: PropTypes.number.isRequired
+    })).isRequired
 }

@@ -2,11 +2,10 @@ import React from 'react';
 import { BarChart, Bar, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, YAxis } from 'recharts';
 import formatDate from '../../service/utils/activity/formatDate';
 import CustomTooltips from './CustomTooltips/CustomTooltips';
-import './BarChartGraph.css'
 import PropTypes from 'prop-types';
+import './BarChartGraph.css'
 
 export default function BarChartGraph(props) {
-    console.log(props)
     formatDate(props.data)
 
     return (
@@ -41,7 +40,9 @@ export default function BarChartGraph(props) {
 
 BarChartGraph.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
-        day: PropTypes.string.isRequired, kilogram: PropTypes.number.isRequired, calories: PropTypes.number.isRequired
+        day: PropTypes.string.isRequired, 
+        kilogram: PropTypes.number.isRequired, 
+        calories: PropTypes.number.isRequired
     })).isRequired
 }
 

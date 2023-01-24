@@ -7,7 +7,7 @@ import { ApiUrl } from "../config/env";
  * @returns {object} *Right Data from backend
  */
 
-export async function GetApiUrl(service, id) {
+export async function getApiUrl(service, id) {
     let url;
 
     // eslint-disable-next-line default-case
@@ -25,7 +25,14 @@ export async function GetApiUrl(service, id) {
             url = ApiUrl() + id +'/performance';
             break;
     }
-    let result = await fetch(url)
-    let resultJS = await result.json()
-    return resultJS;
+    const result = await fetch(url)
+    if (!result.ok) {
+        return {
+            errorMessage: 'Data non trouvée'
+        } 
+    } 
+    const resultJS = await result.json()
+    return {
+        data: resultJS
+    };
 }

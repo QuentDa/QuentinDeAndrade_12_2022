@@ -1,15 +1,12 @@
 import React from "react";
 import { RadialBarChart, PolarAngleAxis, RadialBar, ResponsiveContainer } from 'recharts';
 import formatScore from "../../service/utils/score/formatScore";
+import PropTypes from 'prop-types';
 import './PieChartGraph.css'
 
 export default function PieChartGraph(props) {
     const newScore = formatScore(props.data)
-
     const todayScoreArray = [{ value: newScore }]
-
-    console.log(todayScoreArray)
-
 
     return (
         <div className="PieChartGraph">
@@ -31,3 +28,7 @@ export default function PieChartGraph(props) {
         </div>
     );
 }
+
+PieChartGraph.propTypes = {
+    data: PropTypes.number.isRequired
+}.isRequired

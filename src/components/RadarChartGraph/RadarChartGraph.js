@@ -1,7 +1,9 @@
 import React from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import './RadarChartGraph.css'
 import formatKind from "../../service/utils/performance/formatKind";
+import PropTypes from 'prop-types';
+import './RadarChartGraph.css'
+
 
 export default function RadarChartGraph(props) {
     const formattedData = formatKind(props.data)
@@ -17,4 +19,11 @@ export default function RadarChartGraph(props) {
             </ResponsiveContainer>
         </div>
     );
+}
+
+RadarChartGraph.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        kind: PropTypes.number.isRequired
+    })).isRequired
 }
